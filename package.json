@@ -1,0 +1,31 @@
+{
+  "name": "savings",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "truffle": "cd eth && truffle"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/skyeatshorizon/savings.git"
+  },
+  "author": "Fabian Fuhrmann",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/skyeatshorizon/savings/issues"
+  },
+  "homepage": "https://github.com/skyeatshorizon/savings#readme",
+  "dependencies": {
+    "truffle": "^5.4.0"
+  },
+  "devDependencies": {
+    "@chainlink/contracts": "^0.1.9",
+    "@openzeppelin/contracts": "3.4.1-solc-0.7",
+    "@openzeppelin/test-environment": "^0.1.6",
+    "@openzeppelin/test-helpers": "github:OpenZeppelin/openzeppelin-test-helpers",
+    "@openzeppelin/truffle-upgrades": "^1.5.0",
+    "@truffle/hdwallet-provider": "^1.4.0"
+  }
+}
