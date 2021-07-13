@@ -1,0 +1,6 @@
+node_modules
+.giosave*
+.~lock*
+*.sublime-workspace
+*.sublime-project
+
