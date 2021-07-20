@@ -20,6 +20,7 @@
 
 const HDWalletProvider = require('@truffle/hdwallet-provider');
 //0xFcf05834722C2f47Cd995c4C02937D8892429b34
+const privateKeys = [""]; //NEVER COMMIT!!!!!
 //
 // const fs = require('fs');
 // const mnemonic = fs.readFileSync(".secret").toString().trim();
