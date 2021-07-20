@@ -1,3 +1,5 @@
+const { expectEvent, singletons, constants } = require("openzeppelin-test-helpers");
+
 const Saving = artifacts.require("Saving");
 const Token = artifacts.require("Token");
 const BN = web3.utils.BN;
@@ -11,7 +13,7 @@ const tokenCnt = new BN("100000000000000000000");
 contract("Saving", function ([creator, beneficiary, acc0, acc1, acc2, anybody]) {
 	beforeEach(async function () {
 		this.token = await Token.new(tokenCnt, "DummyToken", "XDT", {from: creator});
-
+		this.erc1820 = await singletons.ERC1820Registry(creator);
 	});
 
 	it("should create with correct parameters", async function () {
@@ -160,9 +162,10 @@ contract("Saving", function ([creator, beneficiary, acc0, acc1, acc2, anybody]) 
 		await saving.grantRole("0x0", acc1, {from: creator});
 		await saving.grantRole("0x0", acc2, {from: creator});
 
-		await web3.eth.sendTransaction({from: acc0, to: saving.address, value: 505});
-		await web3.eth.sendTransaction({from: acc1, to: saving.address, value: 505});
-		await web3.eth.sendTransaction({from: acc2, to: saving.address, value: 505});
+		const sos = new BN("505");
+		await web3.eth.sendTransaction({from: acc0, to: saving.address, value: sos});
+		await web3.eth.sendTransaction({from: acc1, to: saving.address, value: sos});
+		await web3.eth.sendTransaction({from: acc2, to: saving.address, value: sos});
 
 		const balanceBeneficiary0 = new BN(await this.token.balanceOf(beneficiary));
 		tx = await saving.withdrawalERC20(this.token.address);
@@ -193,12 +196,14 @@ contract("Saving", function ([creator, beneficiary, acc0, acc1, acc2, anybody]) 
 		await saving.grantRole("0x0", acc0, {from: creator});
 		await saving.grantRole("0x0", acc1, {from: creator});
 		await saving.grantRole("0x0", acc2, {from: creator});
-		
+
 		const balanceBeneficiary0 = new BN(await web3.eth.getBalance(beneficiary));
 
-		await web3.eth.sendTransaction({from: acc0, to: saving.address, value: 505});
-		await web3.eth.sendTransaction({from: acc1, to: saving.address, value: 505});
-		await web3.eth.sendTransaction({from: acc2, to: saving.address, value: 505});
+		const sos = new BN("505");
+		await web3.eth.sendTransaction({from: acc0, to: saving.address, value: sos});
+		await web3.eth.sendTransaction({from: acc1, to: saving.address, value: sos});
+		await web3.eth.sendTransaction({from: acc2, to: saving.address, value: sos});
+		sendTotal = sendTotal.add(sos.mul(new BN("3")));
 
 		const balanceBeneficiary1 = new BN(await web3.eth.getBalance(beneficiary));
 
