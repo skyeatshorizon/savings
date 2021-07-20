@@ -18,8 +18,8 @@
  *
  */
 
-// const HDWalletProvider = require('@truffle/hdwallet-provider');
-// const infuraKey = "fj4jll3k.....";
+const HDWalletProvider = require('@truffle/hdwallet-provider');
+//0xFcf05834722C2f47Cd995c4C02937D8892429b34
 //
 // const fs = require('fs');
 // const mnemonic = fs.readFileSync(".secret").toString().trim();
@@ -46,7 +46,19 @@ module.exports = {
      host: "127.0.0.1",     // Localhost (default: none)
      port: 8545,            // Standard Ethereum port (default: none)
      network_id: "*",       // Any network (default: none)
-     websockets: false
+     websockets: false,
+     gasPrice: 14E9,
+    },
+
+    main:{
+      network_id: 1,
+      provider: new HDWalletProvider(privateKeys, "https://mainnet.infura.io/v3/aca16d2e632b4999a8a0782adce15323"),
+      production: true,
+      networkCheckTimeout: 6000,
+      skipDryRun: true,     // Skip dry run before migrations? (default: false for public nets )
+      confirmations: 2,
+      timeoutBlocks: 50,
+      gasPrice: 14E9,
     }
     // Another network with more advanced options...
     // advanced: {
