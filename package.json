@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "flattener" : "cd eth && solidity-flattener",
     "truffle": "cd eth && truffle",
     "ganache": "cd eth && ganache-cli"
   },
@@ -19,6 +20,7 @@
   },
   "homepage": "https://github.com/skyeatshorizon/savings#readme",
   "dependencies": {
+    "@zemse/solidity-flattener": "^1.5.1",
     "openzeppelin-test-helpers": "^0.5.1",
     "truffle": "^5.4.0"
   },
