@@ -53,7 +53,7 @@ module.exports = {
 
     main:{
       network_id: 1,
-      provider: new HDWalletProvider(privateKeys, "https://mainnet.infura.io/v3/aca16d2e632b4999a8a0782adce15323"),
+      provider: new HDWalletProvider(privateKeys, "https://mainnet.infura.io/v3/....."),
       production: true,
       networkCheckTimeout: 6000,
       skipDryRun: true,     // Skip dry run before migrations? (default: false for public nets )
